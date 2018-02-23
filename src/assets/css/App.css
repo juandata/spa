@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+#main {
+  height: 100%;
+  display: flex;
+  color: gray;
+  font-size: x-large;
+}
+#nav {
+  border: solid;
+  height: -webkit-fill-available;
+  display: block;
+  width: 30%;
+  }
