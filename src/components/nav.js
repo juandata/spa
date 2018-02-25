@@ -6,10 +6,8 @@ const menuPages =  [
   {title:'Menu item 3', inbox:0},
   {title:'Reviews', inbox:1138},
 ];
-const reviews = 1118;
-var menu = [];
 
- export class Nav extends React.Component{
+export class Nav extends React.Component{
    constructor(props){
      super(props);
      this.handleClick = this.handleClick.bind(this);
@@ -22,21 +20,17 @@ var menu = [];
   }
 
 render() {
-   menu = menuPages.map(page => {
+   return menuPages.map(page => {
           let hasInbox = page.inbox > 0;
           return (
-           <li >
+           <li>
              <a className="a" href= {"/" + page.title} id={page.title} onClick={this.handleClick}  >
              {page.title}
              </a>
-             <span className={hasInbox?"badge":''}>{hasInbox?' ' + page.inbox:''}</span>
+             <span className={ hasInbox ? "badge" : '' }> { hasInbox ?' ' + page.inbox:'' } </span>
            </li>
          )
-
-
-
      });
-   return menu;
        }
 
 }
