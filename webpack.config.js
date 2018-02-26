@@ -4,46 +4,37 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
-  output: {
-    filename: "[name].[chunkhash].js",
-    path: path.resolve(__dirname, "dist")
-  },
-
-  resolve: {
-    extensions: [".js", ".es6"]
-  },
-  watch: true,
-  module: {
-    loaders: [
-      {
-        test: [/\.js$/, /\.es6$/],
-        exclude: /node_modules/,
-        loader: "babel-loader",
-        query: {
-          cacheDirectory: true,
-          presets: ["react", "es2015"]
-        }
-      },
-      {
-        test: /\.css$/,
-        loaders: ["style-loader", "css-loader"]
-      },
-      {
-        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-        loader: "url-loader",
-        options: {
-          limit: 10000
-        }
-      }
-    ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Caching",
-      filename: "index.html",
-      template: "src/index.html"
-    })
-  ]
+   output: {
+     filename: "bundle.js",
+     path: path.resolve(__dirname, "dist")
+   },
+  // resolve: {
+  //   extensions: [".css"]
+  // },
+  // watch: true,
+  // module: {
+  //   loaders: [
+  //     {
+  //       test: /\.css$/,
+  //       loaders: ["style-loader", "css-loader"]
+  //     },
+  //     {
+  //       test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+  //       loader: "url-loader",
+  //       options: {
+  //         limit: 10000
+  //       }
+  //     }
+  //   ]
+  // },
+  // plugins: [
+  //   new HtmlWebpackPlugin({
+  //     title: "ReactJS and webpack",
+  //     filename: "index.html",
+  //     template: "./public/index.html",
+  //     hash: true
+  //   })
+  // ]
 };
 /*
 As you can see above, we have added three keys to our first loader.

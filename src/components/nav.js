@@ -6,10 +6,9 @@ export class Nav extends React.Component{
      super(props);
      this.handleClick = this.handleClick.bind(this);
   }
-      //get current id of li and updates current active li and inactive li
   handleClick(e){
     e.preventDefault();
-    this.props.onChange(e.target.id);//updates this prop call onChange which will receive the value of e in app.js
+    this.props.onChange(e.target.id);
   }
 
 render() {
@@ -18,13 +17,12 @@ render() {
           return (
            <li className="list-item"  key={i}>
              <a className="a" href= {"/" + page.title} id={page.title} onClick={this.handleClick}  >
-             {page.title}
+              {page.title}
              </a>
              <span className={ hasInbox ? "badge" : '' }> { hasInbox ?' ' + page.inbox:'' } </span>
            </li>
          )
      });
-
   }
 
 }

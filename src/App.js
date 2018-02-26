@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Nav} from "./components/nav";
 import {Section} from "./components/section";
 import './assets/css/App.css';
+import { menuPages } from './assets/globals';
 
 // Redux-stuff
 import { connect } from 'react-redux';
@@ -18,12 +19,7 @@ class App extends Component {
   }
 
   componentWillMount(){
-    this.menuPages =  [
-      {title:'Menu item 1', inbox:0},
-      {title:'Menu item 2', inbox:0},
-      {title:'Menu item 3', inbox:0},
-      {title:'Reviews', inbox:1138},
-    ];
+    this.menuPages = menuPages;
   }
 
   //updates this state with onChange value inherited from nav.js

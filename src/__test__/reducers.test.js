@@ -4,7 +4,9 @@ describe('menus reducer', () => {
   it('should handle initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual({menu:''})
+    ).toEqual({
+      menu:''
+    })
   })
 
   it('should handle MENU_CHANGED', () => {
