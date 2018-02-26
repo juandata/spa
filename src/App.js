@@ -8,33 +8,29 @@ import { menuPages } from './assets/globals';
 import { connect } from 'react-redux';
 import { menuChange } from './actions/menu-actions';
 import { sectionClicked } from './actions/section-actions';
-import store from './store/store';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = { name: '' };
      this.changeName = this.changeName.bind(this);
-     this.handleSectionClick = this.handleSectionClick.bind(this);
+     this.sectionClicked = this.sectionClicked.bind(this);
   }
 
   componentWillMount(){
     this.menuPages = menuPages;
   }
 
-  //updates this state with onChange value inherited from nav.js
   changeName(newName) {
-  store.dispatch(menuChange(newName));
   this.setState({
      name: newName
+   },() => {
+     this.props.menuChange(this.state.name);
    });
  }
 
- handleSectionClick(){
-   // Por algun motivo no me esta pescando el evento del click en un stateless component
-   console.log("Hacoona matata");
-   //store.dispatch(this.props.sectionClicked(menu););
-  //  this.props.sectionClicked(this.state.name);
+ sectionClicked(menu){
+    this.props.sectionClicked(menu);
  }
 
   render() {
@@ -44,7 +40,7 @@ class App extends Component {
           <nav id="nav">
             <Nav menuPages={ this.menuPages } onChange={this.changeName} />
           </nav>
-          <Section navName={ this.state.name } onClick={ this.handleSectionClick }/>
+          <Section navName={ this.state.name } onClick={ this.sectionClicked }/>
         </ main>
       </div>
     );
@@ -56,7 +52,8 @@ const mapStateToProps = state => {
 };
 
 const mapActionToProps = {
-  sectionClicked: sectionClicked
-};
+  sectionClicked,
+  menuChange,
+ };
 
 export default connect(mapStateToProps,mapActionToProps)(App);
