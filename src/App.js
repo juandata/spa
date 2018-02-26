@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import {Nav} from "./components/nav";
 import {Section} from "./components/section";
-//import {Main} from "./components/main"
-
-//import logo from './assets/img/logo.svg';
 import './assets/css/App.css';
 
 class App extends Component {

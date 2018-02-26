@@ -1,0 +1,36 @@
+Redux está conformado por tres partes principales: actions, reducers and store.
+1.Actions: Objects that send info from app to the store.
+ej: {
+    type: LOGIN_USER,
+    payload: {username: ‘sebastian’, password: ‘123456’}
+}
+Actions are created with actions creators functions:
+ej: function authUser(data) {
+    return {
+        type: LOGIN_USER,
+        payload: data
+    }
+}
+call actions in the app is easy with the dispatch method:
+ej:  dispatch(authUser(data));
+
+2.Reducers are pure js functions that take the current app state and an action object and return a
+new app state.
+ej:function myReducer (state , action)  {
+  switch (action.type) {
+    case 'LOGIN_USER':
+      return Object.assign({}, state, {
+        auth: action.payload
+      })
+    default:
+      return state
+  }
+}
+
+3.The store contain the app state and is created with the createStore method from redux library:
+ej: import { createStore } from ‘redux’;
+let store = createStore(myReducer);
+One needs to pass the reducer function as a parameter in the createStore method. With this pattern
+one can dispatch an action to the store which is handled by the reducer.
+let authData = {username: ‘sebastian’, password: ‘123456’};
+store.dispatch(authUser(authData));
